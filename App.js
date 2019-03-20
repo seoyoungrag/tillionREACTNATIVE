@@ -7,14 +7,15 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, WebView, View} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
+import { WebView } from "react-native-webview";
 
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return ( Platform.select({ ios: <WebView style={{marginTop: 30}} source={{ uri : "http://218.147.200.173:18080/mobile"}} />,
-    android : <WebView style={{marginTop: 30}} source={{ uri : "http://218.147.200.173:18080/mobile"}} />
+    android : <WebView source={{ uri : "http://218.147.200.173:18080/mobile"}} />
     })
     );
   }
