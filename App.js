@@ -14,8 +14,24 @@ import { WebView } from "react-native-webview";
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-    return ( Platform.select({ ios: <WebView style={{marginTop: 30}} source={{ uri : "http://218.147.200.173:18080/mobile"}} />,
-    android : <WebView source={{ uri : "http://218.147.200.173:18080/mobile"}} />
+    return ( Platform.select({ ios: 
+    <WebView 
+      ref={r => (this.webref = r)}
+      useWebKit={true} 
+      allowsBackForwardNavigationGestures={true} 
+      style={{marginTop: 30}} 
+      source={{ uri : "http://218.147.200.173:18080/mobile"}} 
+      onMessage={event => {
+        if(event.nativeEvent.data=='back'){
+          this.webref.goBack();
+        }
+
+      }}
+    />,
+    android : 
+    <WebView 
+    source={{ uri : "http://218.147.200.173:18080/mobile"}} 
+    />
     })
     );
   }
