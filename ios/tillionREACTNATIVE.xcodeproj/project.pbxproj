@@ -1143,7 +1143,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tillionpanel.mobile.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skplanet.tillion;
 				PRODUCT_NAME = tillionREACTNATIVE;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1166,7 +1166,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tillionpanel.mobile.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skplanet.tillion;
 				PRODUCT_NAME = tillionREACTNATIVE;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
