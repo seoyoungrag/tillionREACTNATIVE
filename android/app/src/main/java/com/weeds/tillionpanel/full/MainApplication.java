@@ -1,4 +1,4 @@
-package com.tillionpanel.mobile.android;
+package com.weeds.tillionpanel.full;
 
 import android.app.Application;
 

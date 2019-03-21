@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.tillionpanel.mobile.android">
+  package="com.weeds.tillionpanel.full">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
