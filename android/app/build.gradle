@@ -138,6 +138,7 @@ android {
 }
 
 dependencies {
+    implementation "com.google.firebase:firebase-messaging:17.3.4"
     // This should be here already
     implementation project(':react-native-firebase') // added for react-native-firebase by yr.seo 19.3.22
     // Firebase dependencies
