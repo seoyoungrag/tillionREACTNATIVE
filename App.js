@@ -7,14 +7,23 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
 
 type Props = {};
+const userFirebaseInfo = {};
 export default class App extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firebasePushToken: null
+    };
+  }
   componentWillMount() {
+    this.checkPushPermission();
+    userFirebaseInfo.firebaseDeviceType = Platform.OS;
     const channel = new firebase.notifications.Android.Channel(
       "tillion_channel",
       "tillion_channel",
@@ -27,14 +36,14 @@ export default class App extends Component<Props> {
       .notifications()
       .getInitialNotification();
     if (notificationOpen) {
-      console.warn("----------------------start notificationOpen");
-      console.warn(notificationOpen);
+      //console.warn("----------------------start notificationOpen");
+      //console.warn(notificationOpen);
       // App was opened by a notification
       // Get the action triggered by the notification being opened
       const action = notificationOpen.action;
       // Get information about the notification that was opened
       const notification: Notification = notificationOpen.notification;
-      console.warn("----------------------end notificationOpen");
+      //console.warn("----------------------end notificationOpen");
     }
     this.notificationDisplayedListener = firebase
       .notifications()
@@ -96,11 +105,20 @@ export default class App extends Component<Props> {
       if (fcmToken) {
         console.warn(fcmToken);
         console.warn("user has a device token");
+        this.setState({
+          firebasePushToken: fcmToken
+        });
       } else {
         console.warn("user doesn`t have a device token yet");
+        this.setState({
+          firebasePushToken: ""
+        });
       }
       console.warn("----------------------end checkPushPermission(enabled)");
     } else {
+      this.setState({
+        firebasePushToken: ""
+      });
       console.warn("----------------------start checkPushPermission(!enabled)");
       try {
         await firebase.messaging().requestPermission();
@@ -113,26 +131,43 @@ export default class App extends Component<Props> {
     }
   };
   render() {
-    this.checkPushPermission();
-    return Platform.select({
-      ios: (
-        <WebView
-          ref={r => (this.webref = r)}
-          useWebKit={true}
-          allowsBackForwardNavigationGestures={true}
-          style={{ marginTop: 30 }}
-          source={{ uri: "http://218.147.200.173:18080/mobile" }}
-          onMessage={event => {
-            if (event.nativeEvent.data == "back") {
-              this.webref.goBack();
+    userFirebaseInfo.firebasePushToken = this.state.firebasePushToken;
+    return this.state.firebasePushToken ? (
+      Platform.select({
+        ios: (
+          <WebView
+            ref={r => (this.webref = r)}
+            useWebKit={true}
+            allowsBackForwardNavigationGestures={true}
+            style={{ marginTop: 30 }}
+            source={{ uri: "http://218.147.200.173:18080/mobile" }}
+            onMessage={event => {
+              if (event.nativeEvent.data == "back") {
+                this.webref.goBack();
+              }
+            }}
+            javaScriptEnabled={true}
+            injectedJavaScript={
+              `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
             }
-          }}
-        />
-      ),
-      android: (
-        <WebView source={{ uri: "http://218.147.200.173:18080/mobile" }} />
-      )
-    });
+          />
+        ),
+        android: (
+          <WebView
+            source={{ uri: "http://192.168.11.2:8080/mobile" }}
+            javaScriptEnabled={true}
+            injectedJavaScript={
+              `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
+            }
+            onMessage={event => {
+              console.warn(event);
+            }}
+          />
+        )
+      })
+    ) : (
+      <View />
+    );
   }
 }
 
