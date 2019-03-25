@@ -140,7 +140,10 @@ export default class App extends Component<Props> {
             useWebKit={true}
             allowsBackForwardNavigationGestures={true}
             style={{ marginTop: 30 }}
-            source={{ uri: "http://218.147.200.173:18080/mobile" }}
+            source={{
+              //"http://218.147.200.173:18080/mobile"
+              uri: "http://172.100.20.196:8090/mobile"
+            }}
             onMessage={event => {
               if (event.nativeEvent.data == "back") {
                 this.webref.goBack();
@@ -154,7 +157,10 @@ export default class App extends Component<Props> {
         ),
         android: (
           <WebView
-            source={{ uri: "http://192.168.11.2:8080/mobile" }}
+            source={{
+              //"http://192.168.11.2:8080/mobile"
+              uri: "http://172.100.20.196:8090/mobile"
+            }}
             javaScriptEnabled={true}
             injectedJavaScript={
               `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
