@@ -102,11 +102,19 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.tillionpanel.mobile.android"
+        applicationId "com.weeds.tillionpanel.full"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+    }
+    signingConfigs {
+        release {
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword MYAPP_RELEASE_STORE_PASSWORD
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        }
     }
     splits {
         abi {
@@ -118,6 +126,7 @@ android {
     }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -138,6 +147,12 @@ android {
 }
 
 dependencies {
+    implementation "com.google.firebase:firebase-messaging:17.3.4"
+    // This should be here already
+    implementation project(':react-native-firebase') // added for react-native-firebase by yr.seo 19.3.22
+    // Firebase dependencies
+    implementation "com.google.android.gms:play-services-base:16.0.1" // added for react-native-firebase by yr.seo 19.3.22
+    implementation "com.google.firebase:firebase-core:16.0.6" // added for react-native-firebase by yr.seo 19.3.22
     implementation project(':react-native-webview')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
@@ -150,3 +165,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services' // added for react-native-firebase by yr.seo 19.3.22

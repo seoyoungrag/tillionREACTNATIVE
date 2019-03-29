@@ -9,11 +9,12 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.1",
-    "react-native-webview": "^5.3.1"
+    "react-native-firebase": "^5.2.3",
+    "react-native-webview": "^5.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
-    "@babel/runtime": "^7.4.0",
+    "@babel/runtime": "^7.4.2",
     "babel-jest": "^24.5.0",
     "jest": "^24.5.0",
     "metro-react-native-babel-preset": "^0.53.1",
