@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, View, BackHandler } from "react-native";
+import { Alert, Platform, StyleSheet, View, BackHandler } from "react-native";
 import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
@@ -18,7 +18,8 @@ export default class App extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      firebasePushToken: null
+      firebasePushToken: null,
+      webviewUrl: ""
     };
   }
   componentWillMount() {
@@ -32,7 +33,9 @@ export default class App extends Component<Props> {
     firebase.notifications().android.createChannel(channel);
   }
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.backHandler);
+    if (Platform.OS == "android") {
+      BackHandler.addEventListener("hardwareBackPress", this.backHandler);
+    }
     const notificationOpen: NotificationOpen = firebase
       .notifications()
       .getInitialNotification();
@@ -92,18 +95,46 @@ export default class App extends Component<Props> {
       });
   }
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.backHandler);
+    if (Platform.OS == "android") {
+      BackHandler.removeEventListener("hardwareBackPress", this.backHandler);
+    }
     this.notificationDisplayedListener();
     this.notificationListener();
     this.notificationOpenedListener();
     this.onTokenRefreshListener();
   }
-  backHandler = () =>{
-    if(this.refs[webref]) {
-      this.refs[webref].goBack();
+  backHandler = () => {
+    if (this.webref) {
+      if (
+        this.state.webviewUrl.endsWith("/mobile") ||
+        this.state.webviewUrl.endsWith("/mobile/") ||
+        this.state.webviewUrl.endsWith("/mobile#") ||
+        this.state.webviewUrl.endsWith("/mobile#/")
+      ) {
+        Alert.alert(
+          "잠깐!",
+          "앱을 종료하시겠습니까?",
+          [
+            {
+              text: "아니오",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel"
+            },
+            {
+              text: "네",
+              onPress: () => {
+                BackHandler.exitApp();
+              }
+            }
+          ],
+          { cancelable: false }
+        );
+      } else {
+        this.webref.goBack();
+      }
       return true;
-  }
-  }
+    }
+  };
   checkPushPermission = async () => {
     const enabled = await firebase.messaging().hasPermission();
     if (enabled) {
@@ -138,6 +169,11 @@ export default class App extends Component<Props> {
       console.warn("----------------------end checkPushPermission(!enabled)");
     }
   };
+  _onNavigationStateChange = webViewState => {
+    this.setState({
+      webviewUrl: webViewState.url
+    });
+  };
   render() {
     userFirebaseInfo.firebasePushToken = this.state.firebasePushToken;
     return this.state.firebasePushToken ? (
@@ -153,6 +189,7 @@ export default class App extends Component<Props> {
               //uri: "http://172.100.20.196:8090/mobile"
               uri: "http://172.30.1.40:8080/mobile"
             }}
+            onNavigationStateChange={this._onNavigationStateChange}
             onMessage={event => {
               if (event.nativeEvent.data == "back") {
                 this.webref.goBack();
@@ -172,6 +209,7 @@ export default class App extends Component<Props> {
               //uri: "http://172.100.20.196:8090/mobile"
               uri: "http://172.30.1.40:8080/mobile"
             }}
+            onNavigationStateChange={this._onNavigationStateChange}
             javaScriptEnabled={true}
             injectedJavaScript={
               `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
