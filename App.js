@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View, BackHandler } from "react-native";
 import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
@@ -32,6 +32,7 @@ export default class App extends Component<Props> {
     firebase.notifications().android.createChannel(channel);
   }
   componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.backHandler);
     const notificationOpen: NotificationOpen = firebase
       .notifications()
       .getInitialNotification();
@@ -91,10 +92,17 @@ export default class App extends Component<Props> {
       });
   }
   componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.backHandler);
     this.notificationDisplayedListener();
     this.notificationListener();
     this.notificationOpenedListener();
     this.onTokenRefreshListener();
+  }
+  backHandler = () =>{
+    if(this.refs[webref]) {
+      this.refs[webref].goBack();
+      return true;
+  }
   }
   checkPushPermission = async () => {
     const enabled = await firebase.messaging().hasPermission();
@@ -142,7 +150,8 @@ export default class App extends Component<Props> {
             style={{ marginTop: 30 }}
             source={{
               //"http://218.147.200.173:18080/mobile"
-              uri: "http://172.100.20.196:8090/mobile"
+              //uri: "http://172.100.20.196:8090/mobile"
+              uri: "http://172.30.1.40:8080/mobile"
             }}
             onMessage={event => {
               if (event.nativeEvent.data == "back") {
@@ -157,9 +166,11 @@ export default class App extends Component<Props> {
         ),
         android: (
           <WebView
+            ref={r => (this.webref = r)}
             source={{
               //"http://192.168.11.2:8080/mobile"
-              uri: "http://172.100.20.196:8090/mobile"
+              //uri: "http://172.100.20.196:8090/mobile"
+              uri: "http://172.30.1.40:8080/mobile"
             }}
             javaScriptEnabled={true}
             injectedJavaScript={
