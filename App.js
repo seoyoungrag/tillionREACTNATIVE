@@ -182,12 +182,12 @@ export default class App extends Component<Props> {
           <WebView
             ref={r => (this.webref = r)}
             useWebKit={true}
-            allowsBackForwardNavigationGestures={true}
+            allowsBackForwardNavigationGestures={false}
             style={{ marginTop: 30 }}
             source={{
-              //"http://218.147.200.173:18080/mobile"
+              uri: "http://218.147.200.173:18080/mobile"
               //uri: "http://172.100.20.196:8090/mobile"
-              uri: "http://172.30.1.40:8080/mobile"
+              //uri: "http://172.30.1.40:8080/mobile"
             }}
             onNavigationStateChange={this._onNavigationStateChange}
             onMessage={event => {
@@ -205,9 +205,9 @@ export default class App extends Component<Props> {
           <WebView
             ref={r => (this.webref = r)}
             source={{
-              //"http://192.168.11.2:8080/mobile"
+              uri: "http://218.147.200.173:8080/mobile"
               //uri: "http://172.100.20.196:8090/mobile"
-              uri: "http://172.30.1.40:8080/mobile"
+              //uri: "http://172.30.1.40:8080/mobile"
             }}
             onNavigationStateChange={this._onNavigationStateChange}
             javaScriptEnabled={true}
