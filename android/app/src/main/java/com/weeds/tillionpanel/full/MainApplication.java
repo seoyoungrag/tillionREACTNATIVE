@@ -11,6 +11,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+import io.invertase.firebase.fabric.crashlytics.RNFirebaseCrashlyticsPackage; // added for react-native-firebase crashlytics by yr.seo 19.3.28
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(), new RNFirebasePackage(), new RNCWebViewPackage(),
-          new RNFirebaseMessagingPackage(), new RNFirebaseNotificationsPackage());
+          new RNFirebaseMessagingPackage(), new RNFirebaseNotificationsPackage(),
+          new RNFirebaseCrashlyticsPackage() );
     }
 
     @Override
