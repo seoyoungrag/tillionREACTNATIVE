@@ -67,7 +67,7 @@ export default class App extends Component<Props> {
         if (Platform.OS == "android") {
           notification.android
             .setChannelId("tillion_channel")
-            .android.setSmallIcon("ic_launcher");
+            .android.setSmallIcon("ic_stat_noti");
         }
         firebase.notifications().displayNotification(notification);
 
@@ -205,7 +205,7 @@ export default class App extends Component<Props> {
           <WebView
             ref={r => (this.webref = r)}
             source={{
-              uri: "http://218.147.200.173:8080/mobile"
+              uri: "http://218.147.200.173:18080/mobile"
               //uri: "http://172.100.20.196:8090/mobile"
               //uri: "http://172.30.1.40:8080/mobile"
             }}
