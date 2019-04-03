@@ -67,7 +67,7 @@ export default class App extends Component<Props> {
         if (Platform.OS == "android") {
           notification.android
             .setChannelId("tillion_channel")
-            .android.setSmallIcon("ic_launcher");
+            .android.setSmallIcon("ic_stat_noti");
         }
         firebase.notifications().displayNotification(notification);
 
