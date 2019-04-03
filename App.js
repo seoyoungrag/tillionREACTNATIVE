@@ -185,9 +185,10 @@ export default class App extends Component<Props> {
             allowsBackForwardNavigationGestures={false}
             style={{ marginTop: 30 }}
             source={{
-              uri: "http://218.147.200.173:18080/mobile"
+              //uri: "http://218.147.200.173:18080/mobile"
               //uri: "http://172.100.20.196:8090/mobile"
               //uri: "http://172.30.1.40:8080/mobile"
+              uri: "http://devweb.tillionpanel.com/mobile"
             }}
             onNavigationStateChange={this._onNavigationStateChange}
             onMessage={event => {
@@ -205,9 +206,10 @@ export default class App extends Component<Props> {
           <WebView
             ref={r => (this.webref = r)}
             source={{
-              uri: "http://218.147.200.173:8080/mobile"
+              //uri: "http://218.147.200.173:8080/mobile"
               //uri: "http://172.100.20.196:8090/mobile"
               //uri: "http://172.30.1.40:8080/mobile"
+              uri: "http://devweb.tillionpanel.com/mobile"
             }}
             onNavigationStateChange={this._onNavigationStateChange}
             javaScriptEnabled={true}
