@@ -11,6 +11,7 @@ import { Alert, Platform, StyleSheet, View, BackHandler } from "react-native";
 import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
+import SplashScreen from "react-native-splash-screen";
 
 type Props = {};
 const userFirebaseInfo = {};
@@ -93,6 +94,7 @@ export default class App extends Component<Props> {
         console.warn(fcmToken);
         console.warn("----------------------end onTokenRefresh");
       });
+    SplashScreen.hide();
   }
   componentWillUnmount() {
     if (Platform.OS == "android") {

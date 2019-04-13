@@ -13,11 +13,13 @@
 #import <Firebase.h>
 #import "RNFirebaseMessaging.h"
 #import "RNFirebaseNotifications.h"
+#import "RNSplashScreen.h"  
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [RNSplashScreen show];
   [FIRApp configure];
   [RNFirebaseNotifications configure];
   
