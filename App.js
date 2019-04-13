@@ -7,7 +7,14 @@
  */
 
 import React, { Component } from "react";
-import { Alert, Platform, StyleSheet, View, BackHandler } from "react-native";
+import {
+  Alert,
+  Platform,
+  StyleSheet,
+  View,
+  BackHandler,
+  Linking
+} from "react-native";
 import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
@@ -15,6 +22,9 @@ import SplashScreen from "react-native-splash-screen";
 
 type Props = {};
 const userFirebaseInfo = {};
+const popupUrls = [
+  //"mobile/my/point/inipay/start"
+];
 export default class App extends Component<Props> {
   constructor(props) {
     super(props);
@@ -79,9 +89,19 @@ export default class App extends Component<Props> {
       .onNotificationOpened((notificationOpen: NotificationOpen) => {
         console.warn("----------------------start onNotificationOpened");
         console.warn(notificationOpen);
-        const action = notificationOpen.action;
+        if (notificationOpen.notification.data.url) {
+          if (this.webref) {
+            this.webref.injectJavaScript(
+              "javascript:location.href='" +
+                notificationOpen.notification.data.url +
+                "'"
+            );
+          }
+        }
+
+        //const action = notificationOpen.action;
         // Get the action triggered by the notification being opened
-        console.warn(action);
+        //console.warn(action);
         // Get information about the notification that was opened
         const notification: Notification = notificationOpen.notification;
         console.warn(notification);
@@ -92,9 +112,16 @@ export default class App extends Component<Props> {
       .onTokenRefresh(fcmToken => {
         console.warn("----------------------start onTokenRefresh");
         console.warn(fcmToken);
+        if (this.webref) {
+          userFirebaseInfo.firebasePushToken = fcmToken;
+          console.warn(userFirebaseInfo.firebasePushToken);
+          this.webref.injectJavaScript(
+            `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
+          );
+        }
+
         console.warn("----------------------end onTokenRefresh");
       });
-    SplashScreen.hide();
   }
   componentWillUnmount() {
     if (Platform.OS == "android") {
@@ -175,6 +202,13 @@ export default class App extends Component<Props> {
     this.setState({
       webviewUrl: webViewState.url
     });
+    for (var i = 0; i < popupUrls.length; i++) {
+      if (webViewState.url.indexOf(popupUrls[i]) > -1) {
+        this.webref.stopLoading();
+        console.warn(webViewState.url);
+        Linking.openURL(webViewState.url);
+      }
+    }
   };
   render() {
     const webviewProps = Platform.select({
@@ -191,7 +225,8 @@ export default class App extends Component<Props> {
       android: {}
     });
     userFirebaseInfo.firebasePushToken = this.state.firebasePushToken;
-    return this.state.firebasePushToken ? (
+    //return this.state.firebasePushToken ? (
+    return (
       <WebView
         {...webviewProps}
         style={webviewStyle}
@@ -213,10 +248,17 @@ export default class App extends Component<Props> {
         injectedJavaScript={
           `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
         }
+        onLoadEnd={() => {
+          SplashScreen.hide();
+          console.warn("webview loadFinished!");
+        }}
       />
+    );
+    /*
     ) : (
       <View />
     );
+    */
   }
 }
 
