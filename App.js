@@ -175,53 +175,43 @@ export default class App extends Component<Props> {
     });
   };
   render() {
+    const webviewProps = Platform.select({
+      ios: {
+        useWebKit: true,
+        allowsBackForwardNavigationGestures: false
+      },
+      android: {}
+    });
+    const webviewStyle = Platform.select({
+      ios: {
+        marginTop: 30
+      },
+      android: {}
+    });
     userFirebaseInfo.firebasePushToken = this.state.firebasePushToken;
     return this.state.firebasePushToken ? (
-      Platform.select({
-        ios: (
-          <WebView
-            ref={r => (this.webref = r)}
-            useWebKit={true}
-            allowsBackForwardNavigationGestures={false}
-            style={{ marginTop: 30 }}
-            source={{
-              //uri: "http://218.147.200.173:18080/mobile"
-              //uri: "http://172.100.20.196:8090/mobile"
-              //uri: "http://172.30.1.40:8080/mobile"
-              uri: "http://devweb.tillionpanel.com/mobile"
-            }}
-            onNavigationStateChange={this._onNavigationStateChange}
-            onMessage={event => {
-              if (event.nativeEvent.data == "back") {
-                this.webref.goBack();
-              }
-            }}
-            javaScriptEnabled={true}
-            injectedJavaScript={
-              `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
-            }
-          />
-        ),
-        android: (
-          <WebView
-            ref={r => (this.webref = r)}
-            source={{
-              //uri: "http://218.147.200.173:8080/mobile"
-              //uri: "http://172.100.20.196:8090/mobile"
-              //uri: "http://172.30.1.40:8080/mobile"
-              uri: "http://devweb.tillionpanel.com/mobile"
-            }}
-            onNavigationStateChange={this._onNavigationStateChange}
-            javaScriptEnabled={true}
-            injectedJavaScript={
-              `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
-            }
-            onMessage={event => {
-              console.warn(event);
-            }}
-          />
-        )
-      })
+      <WebView
+        {...webviewProps}
+        style={webviewStyle}
+        ref={r => (this.webref = r)}
+        source={{
+          //uri: "http://218.147.200.173:18080/mobile"
+          //uri: "http://172.100.20.196:8090/mobile"
+          //uri: "http://172.30.1.40:8080/mobile"
+          uri: "http://devweb.tillionpanel.com/mobile"
+        }}
+        onNavigationStateChange={this._onNavigationStateChange}
+        onMessage={event => {
+          console.warn(event);
+          if (Platform.OS === "ios" && event.nativeEvent.data == "back") {
+            this.webref.goBack();
+          }
+        }}
+        javaScriptEnabled={true}
+        injectedJavaScript={
+          `window.userFirebaseInfo = ` + JSON.stringify(userFirebaseInfo)
+        }
+      />
     ) : (
       <View />
     );
