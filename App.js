@@ -13,7 +13,8 @@ import {
   StyleSheet,
   View,
   BackHandler,
-  Linking
+  Linking,
+  PermissionsAndroid
 } from "react-native";
 import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
@@ -46,6 +47,7 @@ export default class App extends Component<Props> {
   componentDidMount() {
     if (Platform.OS == "android") {
       BackHandler.addEventListener("hardwareBackPress", this.backHandler);
+      this.requestCameraPermission();
     }
     const notificationOpen: NotificationOpen = firebase
       .notifications()
@@ -209,6 +211,32 @@ export default class App extends Component<Props> {
         Linking.openURL(webViewState.url);
       }
     }
+    if (webViewState.url.indexOf("/poll/new") > -1) {
+      if (Platform.OS == "android") {
+        this.requestCameraPermission();
+      }
+    }
+  };
+
+  requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: "카메라 권한을 허가해주세요.",
+          message: "투표 등록시 카메라 권한이 필요합니다.",
+          buttonNegative: "아니오",
+          buttonPositive: "네"
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("You can use the camera");
+      } else {
+        console.log("Camera permission denied");
+      }
+    } catch (err) {
+      console.warn(err);
+    }
   };
   render() {
     const webviewProps = Platform.select({
@@ -235,6 +263,7 @@ export default class App extends Component<Props> {
           //uri: "http://218.147.200.173:18080/mobile"
           //uri: "http://172.100.20.196:8090/mobile"
           //uri: "http://172.30.1.40:8080/mobile"
+          //uri: "https://www.tillionpanel.com/mobile"
           uri: "http://devweb.tillionpanel.com/mobile"
         }}
         onNavigationStateChange={this._onNavigationStateChange}
