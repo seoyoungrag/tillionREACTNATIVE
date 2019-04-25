@@ -107,8 +107,8 @@ android {
         applicationId "com.weeds.tillionpanel.full"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 80
+        versionName "1.4.9"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -152,6 +152,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-kakao-link')
     // This should be here already
     implementation project(':react-native-firebase') // added for react-native-firebase by yr.seo 19.3.22
     // Firebase dependencies
@@ -164,6 +165,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    compile group: 'com.kakao.sdk', name: 'kakaolink', version: project.KAKAO_SDK_VERSION
 }
 
 // Run this once to be able to run the application with BUCK

@@ -3,6 +3,7 @@ package com.weeds.tillionpanel.full;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.reactlibrary.RNKakaoLinkPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
+            new RNKakaoLinkPackage(),
             new SplashScreenReactPackage(), new RNFirebasePackage(), new RNCWebViewPackage(),
           new RNFirebaseMessagingPackage(), new RNFirebaseNotificationsPackage(),
           new RNFirebaseCrashlyticsPackage() );

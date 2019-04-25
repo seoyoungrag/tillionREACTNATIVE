@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -29,6 +28,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		EE87FEB38B7243AA8172025B /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F64C577673D441BA28478F3 /* libRNFirebase.a */; };
+		C4C06922A87F445692387798 /* libRNKakaoLink.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 162477D3B98443C289D459B9 /* libRNKakaoLink.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,6 +351,8 @@
 		E0E97E4ABDDD4E09A1C5B032 /* libRNCWebView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCWebView.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		0EEB1533D73E487BBC954861 /* RNKakaoLink.xcodeproj */ = {isa = PBXFileReference; name = "RNKakaoLink.xcodeproj"; path = "../node_modules/react-native-kakao-link/ios/RNKakaoLink.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		162477D3B98443C289D459B9 /* libRNKakaoLink.a */ = {isa = PBXFileReference; name = "libRNKakaoLink.a"; path = "libRNKakaoLink.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,7 +376,8 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				1B44E8BAC1314DC2B4679A8B /* libRNCWebView.a in Frameworks */,
 				EE87FEB38B7243AA8172025B /* libRNFirebase.a in Frameworks */,
-				995BF52CCFE7D340D55E35CA /* libPods-tillionREACTNATIVE.a in Frameworks */,
+				A54709AEED1F799BD1121BF7 /* libPods-tillionREACTNATIVE.a in Frameworks */,
+				C4C06922A87F445692387798 /* libRNKakaoLink.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +584,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				43706D845A9E4349AA5D7D45 /* RNCWebView.xcodeproj */,
 				C62955E6EDD647AF94A2954C /* RNFirebase.xcodeproj */,
+				0EEB1533D73E487BBC954861 /* RNKakaoLink.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1152,6 +1156,7 @@
 					"$(SRCROOT)/../node_modules/react-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-kakao-link/ios",
 				);
 				INFOPLIST_FILE = tillionREACTNATIVE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1163,6 +1168,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skplanet.tillion;
 				PRODUCT_NAME = tillionREACTNATIVE;
 				VERSIONING_SYSTEM = "apple-generic";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/tillionREACTNATIVE\"",
+				);
 			};
 			name = Debug;
 		};
@@ -1179,6 +1188,7 @@
 					"$(SRCROOT)/../node_modules/react-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-kakao-link/ios",
 				);
 				INFOPLIST_FILE = tillionREACTNATIVE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1190,6 +1200,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.skplanet.tillion;
 				PRODUCT_NAME = tillionREACTNATIVE;
 				VERSIONING_SYSTEM = "apple-generic";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/tillionREACTNATIVE\"",
+				);
 			};
 			name = Release;
 		};

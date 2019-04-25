@@ -13,12 +13,14 @@ import {
   StyleSheet,
   View,
   BackHandler,
-  Linking
+  Linking,
+  PermissionsAndroid
 } from "react-native";
 import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
 import SplashScreen from "react-native-splash-screen";
+import RNKakaoLink from "react-native-kakao-link";
 
 type Props = {};
 const userFirebaseInfo = {};
@@ -46,6 +48,7 @@ export default class App extends Component<Props> {
   componentDidMount() {
     if (Platform.OS == "android") {
       BackHandler.addEventListener("hardwareBackPress", this.backHandler);
+      this.requestCameraPermission();
     }
     const notificationOpen: NotificationOpen = firebase
       .notifications()
@@ -135,10 +138,11 @@ export default class App extends Component<Props> {
   backHandler = () => {
     if (this.webref) {
       if (
-        this.state.webviewUrl.endsWith("/mobile") ||
-        this.state.webviewUrl.endsWith("/mobile/") ||
-        this.state.webviewUrl.endsWith("/mobile#") ||
-        this.state.webviewUrl.endsWith("/mobile#/")
+        this.state.webviewUrl.indexOf("?ref=") < 0 &&
+        (this.state.webviewUrl.endsWith("/mobile") ||
+          this.state.webviewUrl.endsWith("/mobile/") ||
+          this.state.webviewUrl.endsWith("/mobile#") ||
+          this.state.webviewUrl.endsWith("/mobile#/"))
       ) {
         Alert.alert(
           "잠깐!",
@@ -202,12 +206,40 @@ export default class App extends Component<Props> {
     this.setState({
       webviewUrl: webViewState.url
     });
+    console.warn(webViewState.url);
+
     for (var i = 0; i < popupUrls.length; i++) {
       if (webViewState.url.indexOf(popupUrls[i]) > -1) {
         this.webref.stopLoading();
         console.warn(webViewState.url);
         Linking.openURL(webViewState.url);
       }
+    }
+    if (webViewState.url.indexOf("/poll/new") > -1) {
+      if (Platform.OS == "android") {
+        this.requestCameraPermission();
+      }
+    }
+  };
+
+  requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: "카메라 권한을 허가해주세요.",
+          message: "투표 등록시 카메라 권한이 필요합니다.",
+          buttonNegative: "아니오",
+          buttonPositive: "네"
+        }
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log("You can use the camera");
+      } else {
+        console.log("Camera permission denied");
+      }
+    } catch (err) {
+      console.warn(err);
     }
   };
   render() {
@@ -240,9 +272,26 @@ export default class App extends Component<Props> {
         }}
         onNavigationStateChange={this._onNavigationStateChange}
         onMessage={event => {
-          console.warn(event);
+          console.warn(event.nativeEvent.data);
           if (Platform.OS === "ios" && event.nativeEvent.data == "back") {
             this.webref.goBack();
+          }
+          if (event.nativeEvent.data.indexOf("*") > -1) {
+            RNKakaoLink.link(
+              event.nativeEvent.data.split("*")[0],
+              event.nativeEvent.data.split("*")[1],
+              event.nativeEvent.data.split("*")[2]
+            );
+            /*
+            RNKakaoLink.link(
+              result => {
+                console.log(result);
+              },
+              event.nativeEvent.data.split("*")[0],
+              event.nativeEvent.data.split("*")[1],
+              event.nativeEvent.data.split("*")[2]
+            );
+            */
           }
         }}
         javaScriptEnabled={true}
