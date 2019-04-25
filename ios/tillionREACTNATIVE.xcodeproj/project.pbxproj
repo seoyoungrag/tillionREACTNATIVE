@@ -23,9 +23,9 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1B44E8BAC1314DC2B4679A8B /* libRNCWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E97E4ABDDD4E09A1C5B032 /* libRNCWebView.a */; };
 		540322AF2262060F003D7C0D /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 540322AE226205FD003D7C0D /* libSplashScreen.a */; };
+		5403233F2264597E003D7C0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5403233E2264597E003D7C0D /* GoogleService-Info.plist */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		9A3C3893224636AB00D720C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A3C3892224636AB00D720C2 /* GoogleService-Info.plist */; };
-		A54709AEED1F799BD1121BF7 /* libPods-tillionREACTNATIVE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 217643938794CEEDE98C146A /* libPods-tillionREACTNATIVE.a */; };
+		995BF52CCFE7D340D55E35CA /* libPods-tillionREACTNATIVE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C31AEBFBB79F390302420A96 /* libPods-tillionREACTNATIVE.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		EE87FEB38B7243AA8172025B /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F64C577673D441BA28478F3 /* libRNFirebase.a */; };
@@ -333,19 +333,19 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = tillionREACTNATIVE/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = tillionREACTNATIVE/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		217643938794CEEDE98C146A /* libPods-tillionREACTNATIVE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tillionREACTNATIVE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43706D845A9E4349AA5D7D45 /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
 		4F64C577673D441BA28478F3 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		54032282226205FD003D7C0D /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
+		5403233E2264597E003D7C0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		721C9A4CD54F3F93F6833E7F /* Pods-tillionREACTNATIVE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tillionREACTNATIVE.debug.xcconfig"; path = "Target Support Files/Pods-tillionREACTNATIVE/Pods-tillionREACTNATIVE.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		903A0E6E95B07BB780AC09D6 /* libPods-tillionREACTNATIVETests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tillionREACTNATIVETests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A3C3891224634DA00D720C2 /* tillionREACTNATIVE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = tillionREACTNATIVE.entitlements; path = tillionREACTNATIVE/tillionREACTNATIVE.entitlements; sourceTree = "<group>"; };
-		9A3C3892224636AB00D720C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		C31AEBFBB79F390302420A96 /* libPods-tillionREACTNATIVE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tillionREACTNATIVE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C62955E6EDD647AF94A2954C /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		D378E906CBB57DD609A47165 /* Pods-tillionREACTNATIVE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tillionREACTNATIVE.release.xcconfig"; path = "Target Support Files/Pods-tillionREACTNATIVE/Pods-tillionREACTNATIVE.release.xcconfig"; sourceTree = "<group>"; };
 		E0E97E4ABDDD4E09A1C5B032 /* libRNCWebView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCWebView.a; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				1B44E8BAC1314DC2B4679A8B /* libRNCWebView.a in Frameworks */,
 				EE87FEB38B7243AA8172025B /* libRNFirebase.a in Frameworks */,
-				A54709AEED1F799BD1121BF7 /* libPods-tillionREACTNATIVE.a in Frameworks */,
+				995BF52CCFE7D340D55E35CA /* libPods-tillionREACTNATIVE.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,10 +463,10 @@
 		13B07FAE1A68108700A75B9A /* tillionREACTNATIVE */ = {
 			isa = PBXGroup;
 			children = (
+				5403233E2264597E003D7C0D /* GoogleService-Info.plist */,
 				9A3C3891224634DA00D720C2 /* tillionREACTNATIVE.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				9A3C3892224636AB00D720C2 /* GoogleService-Info.plist */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -506,7 +506,7 @@
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				903A0E6E95B07BB780AC09D6 /* libPods-tillionREACTNATIVETests.a */,
-				217643938794CEEDE98C146A /* libPods-tillionREACTNATIVE.a */,
+				C31AEBFBB79F390302420A96 /* libPods-tillionREACTNATIVE.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1050,8 +1050,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				9A3C3893224636AB00D720C2 /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				5403233F2264597E003D7C0D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1151,6 +1151,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = tillionREACTNATIVE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1177,6 +1178,7 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-webviewios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = tillionREACTNATIVE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
