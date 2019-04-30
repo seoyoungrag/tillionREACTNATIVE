@@ -20,6 +20,7 @@ import { WebView } from "react-native-webview";
 import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
 import SplashScreen from "react-native-splash-screen";
+import RNKakaoLink from "react-native-kakao-link";
 
 type Props = {};
 const userFirebaseInfo = {};
@@ -209,6 +210,7 @@ export default class App extends Component<Props> {
       webviewUrl: webViewState.url
     });
     console.warn(webViewState.url);
+
     for (var i = 0; i < popupUrls.length; i++) {
       if (webViewState.url.indexOf(popupUrls[i]) > -1) {
         this.webref.stopLoading();
@@ -276,9 +278,26 @@ export default class App extends Component<Props> {
         }}
         onNavigationStateChange={this._onNavigationStateChange}
         onMessage={event => {
-          console.warn(event);
+          console.warn(event.nativeEvent.data);
           if (Platform.OS === "ios" && event.nativeEvent.data == "back") {
             this.webref.goBack();
+          }
+          if (event.nativeEvent.data.indexOf("*") > -1) {
+            RNKakaoLink.link(
+              event.nativeEvent.data.split("*")[0],
+              event.nativeEvent.data.split("*")[1],
+              event.nativeEvent.data.split("*")[2]
+            );
+            /*
+            RNKakaoLink.link(
+              result => {
+                console.log(result);
+              },
+              event.nativeEvent.data.split("*")[0],
+              event.nativeEvent.data.split("*")[1],
+              event.nativeEvent.data.split("*")[2]
+            );
+            */
           }
         }}
         javaScriptEnabled={true}
