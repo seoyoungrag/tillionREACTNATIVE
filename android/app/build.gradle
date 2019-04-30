@@ -107,8 +107,8 @@ android {
         applicationId "com.weeds.tillionpanel.full"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 76
+        versionName "1.4.9"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

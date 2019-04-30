@@ -137,10 +137,14 @@ export default class App extends Component<Props> {
   backHandler = () => {
     if (this.webref) {
       if (
+        this.state.webviewUrl.endsWith("m.heypoll.co.kr") ||
+        this.state.webviewUrl.endsWith("m.heypoll.co.kr/") ||
+        this.state.webviewUrl.indexOf("ref") < 0 && (
         this.state.webviewUrl.endsWith("/mobile") ||
         this.state.webviewUrl.endsWith("/mobile/") ||
         this.state.webviewUrl.endsWith("/mobile#") ||
         this.state.webviewUrl.endsWith("/mobile#/")
+        )
       ) {
         Alert.alert(
           "잠깐!",
@@ -204,6 +208,7 @@ export default class App extends Component<Props> {
     this.setState({
       webviewUrl: webViewState.url
     });
+    console.warn(webViewState.url);
     for (var i = 0; i < popupUrls.length; i++) {
       if (webViewState.url.indexOf(popupUrls[i]) > -1) {
         this.webref.stopLoading();
@@ -244,7 +249,9 @@ export default class App extends Component<Props> {
         useWebKit: true,
         allowsBackForwardNavigationGestures: false
       },
-      android: {}
+      android: {
+        thirdPartyCookiesEnabled: true
+      }
     });
     const webviewStyle = Platform.select({
       ios: {
@@ -263,8 +270,9 @@ export default class App extends Component<Props> {
           //uri: "http://218.147.200.173:18080/mobile"
           //uri: "http://172.100.20.196:8090/mobile"
           //uri: "http://172.30.1.40:8080/mobile"
-          //uri: "https://www.tillionpanel.com/mobile"
-          uri: "http://devweb.tillionpanel.com/mobile"
+          uri: "https://www.tillionpanel.com/mobile"
+          //uri: "http://devweb.tillionpanel.com/mobile"
+          //uri: "http://192.168.1.201:8080/mobile"
         }}
         onNavigationStateChange={this._onNavigationStateChange}
         onMessage={event => {
