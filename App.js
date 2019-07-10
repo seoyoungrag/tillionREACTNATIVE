@@ -141,11 +141,14 @@ export default class App extends Component<Props> {
   backHandler = () => {
     if (this.webref) {
       if (
-        this.state.webviewUrl.indexOf("?ref=") < 0 &&
-        (this.state.webviewUrl.endsWith("/mobile") ||
-          this.state.webviewUrl.endsWith("/mobile/") ||
-          this.state.webviewUrl.endsWith("/mobile#") ||
-          this.state.webviewUrl.endsWith("/mobile#/"))
+        this.state.webviewUrl.endsWith("m.heypoll.co.kr") ||
+        this.state.webviewUrl.endsWith("m.heypoll.co.kr/") ||
+        this.state.webviewUrl.indexOf("ref") < 0 && (
+        this.state.webviewUrl.endsWith("/mobile") ||
+        this.state.webviewUrl.endsWith("/mobile/") ||
+        this.state.webviewUrl.endsWith("/mobile#") ||
+        this.state.webviewUrl.endsWith("/mobile#/")
+        )
       ) {
         Alert.alert(
           "잠깐!",
@@ -251,7 +254,9 @@ export default class App extends Component<Props> {
         useWebKit: true,
         allowsBackForwardNavigationGestures: false
       },
-      android: {}
+      android: {
+        thirdPartyCookiesEnabled: true
+      }
     });
     const webviewStyle = Platform.select({
       ios: {
