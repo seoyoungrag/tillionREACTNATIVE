@@ -83,6 +83,9 @@ export default class App extends Component<Props> {
             .setChannelId("tillion_channel")
             .android.setSmallIcon("ic_stat_noti");
         }
+        if (Platform.OS === 'ios'){
+          notification.ios.setBadge(0);
+        }
         firebase.notifications().displayNotification(notification);
 
         console.warn("----------------------end onNotification");
@@ -267,8 +270,8 @@ export default class App extends Component<Props> {
           //uri: "http://218.147.200.173:18080/mobile"
           //uri: "http://172.100.20.196:8090/mobile"
           //uri: "http://172.30.1.40:8080/mobile"
-          uri: "http://devweb.tillionpanel.com/mobile"
-          //uri: "https://www.tillionpanel.com/mobile"
+          //uri: "http://devweb.tillionpanel.com/mobile"
+          uri: "https://www.tillionpanel.com/mobile"
         }}
         onNavigationStateChange={this._onNavigationStateChange}
         onMessage={event => {

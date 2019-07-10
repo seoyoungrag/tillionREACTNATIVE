@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">헤이폴</string>
+    <string name="app_name">헤이폴 heypoll</string>
     <string name="kakao_app_key">4647968613b1be723155871bba239957</string>
     <string name="kakao_scheme">kakao4647968613b1be723155871bba239957</string>
     <string name="kakaolink_host">kakaolink</string>
