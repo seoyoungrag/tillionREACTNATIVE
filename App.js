@@ -21,6 +21,7 @@ import firebase from "react-native-firebase";
 import type { Notification } from "react-native-firebase";
 import SplashScreen from "react-native-splash-screen";
 import RNKakaoLink from "react-native-kakao-link";
+import RNAdBrix from "react-native-ad-brix";
 
 type Props = {};
 const userFirebaseInfo = {};
@@ -285,11 +286,29 @@ export default class App extends Component<Props> {
             this.webref.goBack();
           }
           if (event.nativeEvent.data.indexOf("*") > -1) {
-            RNKakaoLink.link(
-              event.nativeEvent.data.split("*")[0],
-              event.nativeEvent.data.split("*")[1],
-              event.nativeEvent.data.split("*")[2]
-            );
+            /*
+            if(event.nativeEvent.data.split("*").length > 3){
+              RNAdBrix.registEvent(event.nativeEvent.data.split("*")[1],event.nativeEvent.data.split("*")[2],event.nativeEvent.data.split("*")[3]);
+            }else{
+              //test 코드
+              RNAdBrix.registEvent(event.nativeEvent.data.split("*")[1],event.nativeEvent.data.split("*")[2],"M");
+            }
+            */
+            if(event.nativeEvent.data.split("*")[0]=='abxSignUp'){
+              if (Platform.OS === "ios"){
+                if(event.nativeEvent.data.split("*").length > 3){
+                  RNAdBrix.registEvent(event.nativeEvent.data.split("*")[1],event.nativeEvent.data.split("*")[2],event.nativeEvent.data.split("*")[3]);
+                }else{
+                  //RNAdBrix.registEvent('X','X',"X");
+                }
+              }
+            }else{  
+              RNKakaoLink.link(
+                event.nativeEvent.data.split("*")[0],
+                event.nativeEvent.data.split("*")[1],
+                event.nativeEvent.data.split("*")[2]
+              );
+            }
             /*
             RNKakaoLink.link(
               result => {

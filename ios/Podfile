@@ -5,6 +5,7 @@ pod 'Firebase/Core', '~> 5.15.0'
 pod 'Firebase/Messaging', '~> 5.15.0'
 pod 'Fabric', '~> 1.7.13'
 pod 'Crashlytics', '~> 3.10.7'
+pod 'AdBrixRemastered'
 
 target 'tillionREACTNATIVE' do
   # Comment the next line if you don't want to use dynamic frameworks

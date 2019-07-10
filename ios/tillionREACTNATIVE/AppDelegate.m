@@ -13,7 +13,9 @@
 #import <Firebase.h>
 #import "RNFirebaseMessaging.h"
 #import "RNFirebaseNotifications.h"
-#import "RNSplashScreen.h"  
+#import "RNSplashScreen.h"
+#import <AdSupport/AdSupport.h>
+#import <AdBrixRM/AdBrixRM-Swift.h>
 
 @implementation AppDelegate
 
@@ -22,6 +24,7 @@
   [FIRApp configure];
   [RNFirebaseNotifications configure];
   
+
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"tillion"
@@ -35,6 +38,17 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   [RNSplashScreen show];
+  
+  AdBrixRM *adBrix = [AdBrixRM sharedInstance];
+  
+  [adBrix initAdBrixWithAppKey:@"0EVJmfZ5I0mdJ3K8YWHkoA" secretKey:@"qZRbmq5wAUakDqmiNGwJOA"];
+  
+  if((NSClassFromString(@"ASidentifierManager"))!=nil){
+    NSUUID *ifa = [[ASIdentifierManager sharedManager]advertisingIdentifier];
+    
+    [adBrix setAppleAdvertisingIdentifier:[ifa UUIDString]];
+  }
+  
   return YES;
 }
 

@@ -22,13 +22,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1B44E8BAC1314DC2B4679A8B /* libRNCWebView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E97E4ABDDD4E09A1C5B032 /* libRNCWebView.a */; };
+		3C0CFC9FCDE7447F95D3AE12 /* libRNAdBrix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D3127BC9B44FF18B47CE16 /* libRNAdBrix.a */; };
 		540322AF2262060F003D7C0D /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 540322AE226205FD003D7C0D /* libSplashScreen.a */; };
 		5403233F2264597E003D7C0D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5403233E2264597E003D7C0D /* GoogleService-Info.plist */; };
+		54AD003722D586F40010F279 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AD000D22D586F40010F279 /* iAd.framework */; };
 		54CB6CD922717A0900003E46 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54CB6CD822717A0900003E46 /* KakaoOpenSDK.framework */; };
 		54CB6D1F22717D0400003E46 /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54CB6CF322717D0400003E46 /* KakaoLink.framework */; };
 		54CB6D2022717D0400003E46 /* KakaoMessageTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54CB6D1D22717D0400003E46 /* KakaoMessageTemplate.framework */; };
 		54CB6D2122717D0400003E46 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54CB6D1E22717D0400003E46 /* KakaoCommon.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		AA4B30025AE57AFF7D6BB171 /* libPods-tillionREACTNATIVE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C31AEBFBB79F390302420A96 /* libPods-tillionREACTNATIVE.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		C4C06922A87F445692387798 /* libRNKakaoLink.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 162477D3B98443C289D459B9 /* libRNKakaoLink.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
@@ -239,6 +242,13 @@
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
 		};
+		54AD007422D59A680010F279 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C7E3530A2E642D6AB3B58A1 /* RNAdBrix.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNAdBrix;
+		};
 		54CB6CD6227179BD00003E46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0EEB1533D73E487BBC954861 /* RNKakaoLink.xcodeproj */;
@@ -346,11 +356,14 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = tillionREACTNATIVE/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		162477D3B98443C289D459B9 /* libRNKakaoLink.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNKakaoLink.a; sourceTree = "<group>"; };
+		1C7E3530A2E642D6AB3B58A1 /* RNAdBrix.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNAdBrix.xcodeproj; path = "../node_modules/react-native-ad-brix/ios/RNAdBrix.xcodeproj"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43706D845A9E4349AA5D7D45 /* RNCWebView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCWebView.xcodeproj; path = "../node_modules/react-native-webview/ios/RNCWebView.xcodeproj"; sourceTree = "<group>"; };
+		49D3127BC9B44FF18B47CE16 /* libRNAdBrix.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNAdBrix.a; sourceTree = "<group>"; };
 		4F64C577673D441BA28478F3 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		54032282226205FD003D7C0D /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		5403233E2264597E003D7C0D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		54AD000D22D586F40010F279 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		54CB6CD822717A0900003E46 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		54CB6CF322717D0400003E46 /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoLink.framework; sourceTree = "<group>"; };
 		54CB6D1D22717D0400003E46 /* KakaoMessageTemplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoMessageTemplate.framework; sourceTree = "<group>"; };
@@ -375,6 +388,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54AD003722D586F40010F279 /* iAd.framework in Frameworks */,
 				540322AF2262060F003D7C0D /* libSplashScreen.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -396,6 +410,8 @@
 				EE87FEB38B7243AA8172025B /* libRNFirebase.a in Frameworks */,
 				C4C06922A87F445692387798 /* libRNKakaoLink.a in Frameworks */,
 				54CB6CD922717A0900003E46 /* KakaoOpenSDK.framework in Frameworks */,
+				AA4B30025AE57AFF7D6BB171 /* libPods-tillionREACTNATIVE.a in Frameworks */,
+				3C0CFC9FCDE7447F95D3AE12 /* libRNAdBrix.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +539,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				54AD000D22D586F40010F279 /* iAd.framework */,
 				54CB6D1E22717D0400003E46 /* KakaoCommon.framework */,
 				54CB6CF322717D0400003E46 /* KakaoLink.framework */,
 				54CB6D1D22717D0400003E46 /* KakaoMessageTemplate.framework */,
@@ -544,6 +561,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		54AD007122D59A680010F279 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				54AD007522D59A680010F279 /* libRNAdBrix.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		54CB6CD3227179BD00003E46 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +583,7 @@
 				E0E97E4ABDDD4E09A1C5B032 /* libRNCWebView.a */,
 				4F64C577673D441BA28478F3 /* libRNFirebase.a */,
 				162477D3B98443C289D459B9 /* libRNKakaoLink.a */,
+				49D3127BC9B44FF18B47CE16 /* libRNAdBrix.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -616,6 +642,7 @@
 				43706D845A9E4349AA5D7D45 /* RNCWebView.xcodeproj */,
 				C62955E6EDD647AF94A2954C /* RNFirebase.xcodeproj */,
 				0EEB1533D73E487BBC954861 /* RNKakaoLink.xcodeproj */,
+				1C7E3530A2E642D6AB3B58A1 /* RNAdBrix.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -683,6 +710,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				54D2D83522506791008493DA /* ShellScript */,
+				DC3C01E87EADA0BFA439C249 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -775,6 +803,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 54AD007122D59A680010F279 /* Products */;
+					ProjectRef = 1C7E3530A2E642D6AB3B58A1 /* RNAdBrix.xcodeproj */;
 				},
 				{
 					ProductGroup = 54CE4F8E22420C0500D73CBF /* Products */;
@@ -1004,6 +1036,13 @@
 			remoteRef = 540322AD226205FD003D7C0D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		54AD007522D59A680010F279 /* libRNAdBrix.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNAdBrix.a;
+			remoteRef = 54AD007422D59A680010F279 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		54CB6CD7227179BD00003E46 /* libRNKakaoLink.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1157,6 +1196,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DC3C01E87EADA0BFA439C249 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tillionREACTNATIVE/Pods-tillionREACTNATIVE-frameworks.sh",
+				"${PODS_ROOT}/AdBrixRemastered/AdBrixRM.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AdBrixRM.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tillionREACTNATIVE/Pods-tillionREACTNATIVE-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1188,6 +1245,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 721C9A4CD54F3F93F6833E7F /* Pods-tillionREACTNATIVE.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tillionREACTNATIVE/tillionREACTNATIVE.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1203,11 +1261,13 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-kakao-link/ios",
+					"$(SRCROOT)/../node_modules/react-native-ad-brix/ios",
 				);
 				INFOPLIST_FILE = tillionREACTNATIVE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/tillionREACTNATIVE\"",
 					"\"$(SRCROOT)/tillionREACTNATIVE\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1226,6 +1286,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D378E906CBB57DD609A47165 /* Pods-tillionREACTNATIVE.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = tillionREACTNATIVE/tillionREACTNATIVE.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1240,11 +1301,13 @@
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-kakao-link/ios",
+					"$(SRCROOT)/../node_modules/react-native-ad-brix/ios",
 				);
 				INFOPLIST_FILE = tillionREACTNATIVE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/tillionREACTNATIVE\"",
 					"\"$(SRCROOT)/tillionREACTNATIVE\"",
 				);
 				OTHER_LDFLAGS = (
